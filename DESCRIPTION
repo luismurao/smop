@@ -1,11 +1,17 @@
 Package: smop
-Title: simple MOP
+Title: simple but fast MOP analysis
 Version: 0.0.1
 Authors@R: 
-    person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Calculates MOP.
-License: GPL (>= 3)
+    c(person("Luis", "Osorio-Olvera", 
+      email = "luismurao@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0701-5398")),
+      person("Rusby G.", "Contreras-Díaz", 
+              email = "rusby.contreras.diaz@gmail.com", 
+              role = "ctb",
+              comment = c(ORCID = "0000-0002-0569-8984")))
+Description: Implements the Mobility-Oriented Parity (MOP) anlysis using the
+             Rcpp package.
+License: GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
