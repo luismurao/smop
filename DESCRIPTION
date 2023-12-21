@@ -1,0 +1,20 @@
+Package: smop
+Title: simple MOP
+Version: 0.0.1
+Authors@R: 
+    person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Calculates MOP.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    Rcpp,
+    purrr,
+    furrr,
+    future,
+    methods,
+    terra
+LinkingTo: 
+    Rcpp, RcppArmadillo
