@@ -10,7 +10,8 @@ Authors@R:
               role = "ctb",
               comment = c(ORCID = "0000-0002-0569-8984")))
 Description: Implements the Mobility-Oriented Parity (MOP) anlysis using the
-             Rcpp package.
+             Rcpp package. The MOP algorithm is detalied in 
+             <doi:10.1016/j.ecolmodel.2013.04.011>
 License: GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

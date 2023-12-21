@@ -9,6 +9,7 @@ Helper function to estimate the quantile of a sample distribution
 Returns a vector of the x values less or equal to the selected quantile
 }
 \details{
-The function is taken from  https://github.com/RcppCore/Rcpp/issues/967
+The function is taken from
+https://github.com/RcppCore/Rcpp/issues/967
 The authors are Rodney Sparapani and Dirk Eddelbuettel
 }
