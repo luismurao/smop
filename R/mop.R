@@ -29,6 +29,7 @@
 #'                       percent = 20,comp_each = NULL,
 #'                       normalized = TRUE, standardize_vars=TRUE)
 #' terra::plot(mop_test)
+#' #' \donttest{
 #' # Example 2: Run the mop function in parallel
 #' future::plan("future::multisession",workers = 2)
 #' mop_test_parallel <- smop::mop(M_calibra = M_calibra,
@@ -37,6 +38,7 @@
 #'                                normalized = TRUE, standardize_vars=TRUE)
 #' future::plan("future::sequential")
 #' terra::plot(mop_test_parallel)
+#' }
 
 
 mop <- function (M_calibra, G_transfer, percent = 10, comp_each = NULL,
