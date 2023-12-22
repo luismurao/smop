@@ -1,3 +1,8 @@
 ^smop\.Rproj$
 ^\.Rproj\.user$
 ^cran-comments\.md$
+^docs$
+^dev$
+^_pkgdown\.yml$
+^pkgdown$
+^CRAN-SUBMISSION$
