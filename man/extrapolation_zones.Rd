@@ -16,6 +16,11 @@ for the transfer area}
 
 \item{as_vec}{Logical. Whether return cell ids of extrapolating pixels or not}
 }
+\value{
+Returns a binary map showing strict extrapolation zones (ones). If
+the parameter as_vec is TRUE, the function return pixel ids of strict
+extrapolation.
+}
 \description{
 Maps strict extrapolation zones
 }

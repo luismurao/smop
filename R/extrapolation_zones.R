@@ -6,6 +6,9 @@
 #' @param G_transfer An object of class SpatRaster or a matrix of predictors
 #' for the transfer area
 #' @param as_vec Logical. Whether return cell ids of extrapolating pixels or not
+#' @return Returns a binary map showing strict extrapolation zones (ones). If
+#' the parameter as_vec is TRUE, the function return pixel ids of strict
+#' extrapolation.
 #' @useDynLib smop
 #' @export
 #' @examples
