@@ -10,5 +10,4 @@ library(testthat)
 library(smop)
 
 test_check("smop")
-devtools::run_examples()
-rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"))
+#rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"))

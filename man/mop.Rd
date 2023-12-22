@@ -50,7 +50,7 @@ mop_test <- smop::mop(M_calibra = M_calibra, G_transfer =  G_transfer,
                       percent = 20,comp_each = NULL,
                       normalized = TRUE, standardize_vars=TRUE)
 terra::plot(mop_test)
-#' \donttest{
+\donttest{
 # Example 2: Run the mop function in parallel
 future::plan("future::multisession",workers = 2)
 mop_test_parallel <- smop::mop(M_calibra = M_calibra,
