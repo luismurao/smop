@@ -84,13 +84,13 @@ mop <- function (M_calibra, G_transfer, percent = 10, comp_each = NULL,
   if(is.numeric(comp_each)){
     n_parts <- ceiling(nrow(g1)/comp_each)
     partitions <- cut(seq_len(nrow(g1)),n_parts)
-    g1L <- split(as.data.frame(g1),partitions)
+    g1L <- base::split.data.frame(g1,partitions)
   } else{
     g1L <- list(g1)
   }
   options(future.globals.maxSize = 388500 * 1024^2)
   rmop <- seq_along(g1L) |> furrr::future_map(function(x){
-    g1_split <- as.matrix(g1L[[x]])
+    g1_split <- g1L[[x]]
     r1 <- calcMOP(m1,g1_split,prob =percent/100)
     return(r1)
   },.progress = TRUE,
