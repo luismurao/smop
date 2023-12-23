@@ -3,6 +3,7 @@
 ^cran-comments\.md$
 ^docs$
 ^dev$
+^img$
 ^_pkgdown\.yml$
 ^pkgdown$
 ^CRAN-SUBMISSION$
