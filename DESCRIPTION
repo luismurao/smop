@@ -2,10 +2,10 @@ Package: smop
 Title: Simple but Fast MOP Analysis
 Version: 0.0.1
 Authors@R: c(
-    person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-0701-5398")),
-    person("Rusby G.", "Contreras-Díaz", , "rusby.contreras.diaz@gmail.com", role = "ctb",
-           comment = c(ORCID = "0000-0002-0569-8984"))
+    person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", 
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0701-5398")),
+    person("Rusby G.", "Contreras-Díaz", , "rusby.contreras.diaz@gmail.com", 
+    role = "aut", comment = c(ORCID = "0000-0002-0569-8984"))
   )
 Description: Implements the Mobility-Oriented Parity (MOP) anlysis using
     the Rcpp package. The MOP algorithm is detalied in the following paper
