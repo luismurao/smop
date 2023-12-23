@@ -63,7 +63,73 @@
 <div class="section level1">
 <div class="page-header"><h1 id="smop">smop<a class="anchor" aria-label="anchor" href="#smop"></a>
 </h1></div>
-<p>Simple but fast MOP</p>
+<p>The <code>smop</code> package is a small R package (it has two main functions) designed to perform the Mobility-Oriented Parity analysis (MOP) both in fast fashion and taking care of memory usage. To do this it uses optimized <code>C++</code> code via the <a href="https://cran.r-project.org/web/packages/Rcpp/index.html" class="external-link"><code>Rcpp</code></a> and <a href="https://cran.r-project.org/web/packages/RcppArmadillo/index.html" class="external-link"><code>RccpArmadillo</code></a> packages.</p>
+<p>The MOP test was proposed in <a href="https://doi.org/10.1016/j.ecolmodel.2013.04.011" class="external-link">Owens et al. 2013</a> to estimate regions where extrapolation occurs (Figure 1).</p>
+<div class="float">
+<img src="reference/figures/Extrapolation_01.jpg" alt="Fig. 1. Extrapolation areas. Taken from Owens et al. 2013"><div class="figcaption">Fig. 1. Extrapolation areas. Taken from <a href="https://doi.org/10.1016/j.ecolmodel.2013.04.011" class="external-link">Owens et al. 2013</a>
+</div>
+</div>
+<div class="section level2">
+<h2 id="example-of-use">Example of use<a class="anchor" aria-label="anchor" href="#example-of-use"></a>
+</h2>
+<p>First we estimate zones where strict extrapolation occurs. To show this, we read environmental data from the calibration and the transfer zones.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">m_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/M_layers"</span>, package <span class="op">=</span> <span class="st">"smop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>                       <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>full.names<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">g_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/G_layers"</span>, package <span class="op">=</span> <span class="st">"smop"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>                       <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>full.names<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">M_calibra</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">m_path</span><span class="op">)</span></span>
+<span><span class="va">G_transfer</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/rast.html" class="external-link">rast</a></span><span class="op">(</span><span class="va">g_path</span><span class="op">)</span></span></code></pre></div>
+<p>Calibration area</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">M_calibra</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="reference/figures/03_calibration_area.png" alt="Fig. 2. Calibration area in Centra America."><div class="figcaption">Fig. 2. Calibration area in Centra America.</div>
+</div>
+<p>Model transfer area</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">G_transfer</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="reference/figures/04_transfer_area.png" alt="Fig. 3. Transfer area in South America."><div class="figcaption">Fig. 3. Transfer area in South America.</div>
+</div>
+<p>Zones where strict extrapolation occurs.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">extr_zones</span> <span class="op">&lt;-</span> <span class="fu">smop</span><span class="fu">::</span><span class="fu"><a href="reference/extrapolation_zones.html">extrapolation_zones</a></span><span class="op">(</span>M_calibra <span class="op">=</span> <span class="va">M_calibra</span>,</span>
+<span>                                        G_transfer <span class="op">=</span> <span class="va">G_transfer</span>,</span>
+<span>                                        as_vec <span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">extr_zones</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="reference/figures/05_strict_extrapol.png" alt="Fig. 4. Zones of strict extrapolation. The green zones represent areas where strcit extrapolation occurs."><div class="figcaption">Fig. 4. Zones of strict extrapolation. The green zones represent areas where strcit extrapolation occurs.</div>
+</div>
+<div class="section level4">
+<h4 id="the-mop-analysis">The MOP analysis<a class="anchor" aria-label="anchor" href="#the-mop-analysis"></a>
+</h4>
+<p>Now we perform the mop analysis</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Example 1 compute mop distance in serial</span></span>
+<span><span class="va">mop_test</span> <span class="op">&lt;-</span> <span class="fu">smop</span><span class="fu">::</span><span class="fu"><a href="reference/mop.html">mop</a></span><span class="op">(</span>M_calibra <span class="op">=</span> <span class="va">M_calibra</span>, G_transfer <span class="op">=</span>  <span class="va">G_transfer</span>,</span>
+<span>                      percent <span class="op">=</span> <span class="fl">10</span>,comp_each <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                      normalized <span class="op">=</span> <span class="cn">TRUE</span>, standardize_vars<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mop_test</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="reference/figures/06_mop_analysis.png" alt="Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogus climates."><div class="figcaption">Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogus climates.</div>
+</div>
+<div class="section level5">
+<h5 id="parallel-mop">Parallel MOP<a class="anchor" aria-label="anchor" href="#parallel-mop"></a>
+</h5>
+<p>The MOP analysis can be performed in parallel by evoking functions from the <code>furrr</code> R package. Here, we use the <em>comp_each</em> parameter to specify the number of pixels to be processed in each CPU core. The number of pixels to be processed in each CPU core depends on the user’s RAM memory; if the user has a computer with few RAM, it is recommended to process by 500 pixels, otherwise, it can be as high as 10,000 pixels. An improvement from other versions of the <em>mop</em> function such as the <code>ntbox</code> and the <code>kuenm</code>, is that the performance of the function is less affected by the parametrization of the <em>comp_each</em> parameter.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Example 2: Run the mop function in parallel</span></span>
+<span><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"future::multisession"</span>,workers <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">mop_test_parallel</span> <span class="op">&lt;-</span> <span class="fu">smop</span><span class="fu">::</span><span class="fu"><a href="reference/mop.html">mop</a></span><span class="op">(</span>M_calibra <span class="op">=</span> <span class="va">M_calibra</span>,</span>
+<span>                               G_transfer <span class="op">=</span>  <span class="va">G_transfer</span>,</span>
+<span>                               percent <span class="op">=</span> <span class="fl">20</span>,comp_each <span class="op">=</span> <span class="fl">500</span>,</span>
+<span>                               normalized <span class="op">=</span> <span class="cn">TRUE</span>, standardize_vars<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"future::sequential"</span><span class="op">)</span></span>
+<span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mop_test_parallel</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+</div>
 </div>
   </div>
 
@@ -88,7 +154,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Luis Osorio-Olvera <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0701-5398" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">More about authors...</a></li>
+<li>Rusby G. Contreras-Díaz <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0569-8984" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -100,7 +166,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Luis Osorio-Olvera.</p>
+<p>Developed by Luis Osorio-Olvera, Rusby G. Contreras-Díaz.</p>
 </div>
 
 <div class="pkgdown">

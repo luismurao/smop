@@ -37,6 +37,11 @@ A SpatRaster object of MOP distances.
 \description{
 mop calculates a Mobility-Oriented Parity
 }
+\details{
+The MOP is calculated following Owens et al.
+(2013; https://doi.org/10.1016/j.ecolmodel.2013.04.011).
+This function is a modification of the MOP function in ntbox R package.
+}
 \examples{
 # Predictors
 m_path <- system.file("extdata/M_layers", package = "smop") |>
