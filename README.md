@@ -68,23 +68,58 @@ terra::plot(mop_test)
 ##### Parallel MOP
 
 The MOP analysis can be performed in parallel by evoking functions from the 
-`furrr` R package. Here, we use the *comp_each* parameter to specify the number
-of pixels to be processed in each CPU core. The number of pixels to be 
-processed in each CPU core depends on the user's RAM memory; if the user has 
-a computer with few RAM, it is recommended to process by 500 pixels, 
-otherwise, it can be as high as 10,000 pixels. An improvement from other 
-versions of  the *mop* function such as the `ntbox` and the `kuenm`, 
-is that the performance of the function is less affected by the 
-parametrization of the *comp_each* parameter.
+[`furrr`](https://furrr.futureverse.org/articles/progress.html) R package. 
+Here, we use the *comp_each* parameter to specify the number of pixels to be 
+processed in each CPU core. The number of pixels to be processed in each CPU 
+core depends on the user's RAM memory; if the user has a computer with few RAM, 
+it is recommended to process by 500 pixels, otherwise, it can be as high 
+as 10,000 pixels. An improvement from other versions of  the *mop* function 
+such as the [`ntbox`](https://github.com/luismurao/ntbox/tree/master) 
+and the [`kuenm`](https://github.com/marlonecobos/kuenm), is that the 
+performance of the function is less affected by the parametrization of 
+the *comp_each* parameter.
 
 ```R
 # Example 2: Run the mop function in parallel
 future::plan("future::multisession",workers = 2)
 mop_test_parallel <- smop::mop(M_calibra = M_calibra,
                                G_transfer =  G_transfer,
-                               percent = 20,comp_each = 500,
+                               percent = 10,comp_each = 500,
                                normalized = TRUE, standardize_vars=TRUE)
 future::plan("future::sequential")
 terra::plot(mop_test_parallel)
 ```
+
+In fact, the better management of memory and the optimization of the code 
+allows users to run MOP analyses on huge extents such as the whole world. Here,
+we show how to run the MOP using the bioclimatic variables for the current time 
+at 10 arc minutes and an climate change scenario.
+
+First, we downloaded the climatic layer for whole world and the current time at
+10 arc minutes. Then, we downloaded the climate change layers. Finally, we run
+the MOP analysis in a parallel fashion using 20 cores.
+
+```R
+bio10_pre <- geodata::worldclim_global("bioc",res=10,path = tempdir())
+bio10_fut <- geodata::cmip6_world("CNRM-CM6-1", "585", "2061-2080",
+                              var="bioc", res=10, path=tempdir())
+
+mop_time <- system.time({
+  future::plan("future::multisession",workers = 20)
+  mop_basic_res1 <- smop::mop(M_calibra = bio10_pre[[c(1,5,6,12,15)]],
+                              G_transfer = bio10_fut[[c(1,5,6,12,15)]],
+                              comp_each = 10000,
+                              percent = 50,standardize_vars = TRUE,
+                              normalized = TRUE)
+  future::plan("future::sequential")
+})
+
+mop_time
+#>     user   system  elapsed 
+#>  420.586   15.776 2781.064 
+```
+
+This process took about 46 minutes which seems to be a lot of time but note
+that this analysis was done for the whole world! Moreover, this kind of
+MOP analysis wont run on other packages. 
 
