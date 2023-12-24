@@ -106,9 +106,10 @@ allows users to run MOP analyses on huge extents such as the whole world. Here,
 we show how to run the MOP using the bioclimatic variables for the current time 
 at 10 arc minutes and an climate change scenario.
 
-First, we downloaded the climatic layer for whole world and the current time at
-10 arc minutes. Then, we downloaded the climate change layers. Finally, we run
-the MOP analysis in a parallel fashion using 20 cores.
+First, we downloaded the climatic layer for whole world for the current time at
+10 arc minutes of resolution. Then, we downloaded the climate change layers at 
+the same spatial resolution.Finally, we run the MOP analysis in a parallel 
+fashion using 20 cores.
 
 ```R
 bio10_pre <- geodata::worldclim_global("bioc",res=10,path = tempdir())
