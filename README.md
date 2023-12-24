@@ -18,6 +18,12 @@
  
  ![Fig. 1. Extrapolation areas. Taken from [Owens et al. 2013](https://doi.org/10.1016/j.ecolmodel.2013.04.011)](man/figures/Extrapolation_01.jpg)
  
+## Installation
+
+::: {.pkgdown-devel}
+You can install the development version of `smop` from GitHub with:
+`remotes::install_github("luismurao/smop")`
+:::
 
 ## Example of use
 
