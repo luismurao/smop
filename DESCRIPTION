@@ -1,0 +1,36 @@
+Package: smop
+Title: Simple but Fast MOP Analysis
+Version: 0.0.1
+Authors@R: c(
+    person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", 
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0701-5398")),
+    person("Rusby G.", "Contreras-Díaz", , "rusby.contreras.diaz@gmail.com", 
+    role = "aut", comment = c(ORCID = "0000-0002-0569-8984"))
+  )
+Description: Implements the Mobility-Oriented Parity (MOP) analysis using
+    the Rcpp package. The MOP algorithm is detailed in the following paper
+    \doi{10.1016/j.ecolmodel.2013.04.011}.
+License: GPL (>= 3) + file LICENSE
+Imports: 
+    furrr,
+    future,
+    methods,
+    purrr,
+    Rcpp,
+    stats,
+    terra
+Suggests: 
+    covr,
+    devtools,
+    knitr,
+    rcmdcheck,
+    rmarkdown,
+    testthat (>= 3.0.0)
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+VignetteBuilder: knitr
