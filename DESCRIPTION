@@ -20,6 +20,7 @@ Imports:
     stats,
     terra
 Suggests: 
+    covr,
     devtools,
     knitr,
     rcmdcheck,

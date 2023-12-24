@@ -1,5 +1,6 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/luismurao/smop/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luismurao/smop/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/luismurao/smop/branch/main/graph/badge.svg)](https://app.codecov.io/gh/luismurao/smop?branch=main)
 <!-- badges: end -->
 
 # smop <a href="https://luismurao.github.io/smop/"><img src="man/figures/logo.png" align="right" height="139" /></a>

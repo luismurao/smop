@@ -9,3 +9,5 @@
 ^CRAN-SUBMISSION$
 ^doc$
 ^Meta$
+^\.github$
+^codecov\.yml$
