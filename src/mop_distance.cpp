@@ -30,7 +30,6 @@ double arma_mean(const arma::vec &A){
 }
 
 
-
 Rcpp::NumericVector lq(Rcpp::NumericVector x, double th) {
   return x[x <= th];
 };
@@ -113,7 +112,11 @@ NumericVector Cquantile(NumericVector x, NumericVector q) {
      }
      //double q = quantile(output1,prob);
      //Rcpp::NumericVector outq = Quantile(output1,prob);
-     Rcpp::NumericVector outq = Cquantile(output1,prob);
+     //Rcpp::NumericVector outq = Cquantile(output1,prob);
+     arma::vec o1 = output1;
+     arma::vec p1 = prob;
+     Rcpp::NumericVector outq = as<NumericVector>(wrap(arma::quantile(o1,p1)));
+
      //output2[i] = Rcpp::mean(outq);
      //output2[i] = rcpp_mean(outq);
      output2[i] = arma_mean(outq);
