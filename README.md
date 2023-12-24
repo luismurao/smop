@@ -108,8 +108,8 @@ at 10 arc minutes and an climate change scenario.
 
 First, we downloaded the climatic layer for whole world for the current time at
 10 arc minutes of resolution. Then, we downloaded the climate change layers at 
-the same spatial resolution.Finally, we run the MOP analysis in a parallel 
-fashion using 20 cores.
+the same spatial resolution. Finally, we run the MOP analysis in a parallel 
+fashion using 10 cores (MACBOOK PRO Apple M1 Max).
 
 ```R
 bio10_pre <- geodata::worldclim_global("bioc",res=10,path = tempdir())
@@ -117,7 +117,7 @@ bio10_fut <- geodata::cmip6_world("CNRM-CM6-1", "585", "2061-2080",
                               var="bioc", res=10, path=tempdir())
 
 mop_time <- system.time({
-  future::plan("future::multisession",workers = 20)
+  future::plan("future::multisession",workers = 10)
   mop_basic_res1 <- smop::mop(M_calibra = bio10_pre[[c(1,5,6,12,15)]],
                               G_transfer = bio10_fut[[c(1,5,6,12,15)]],
                               comp_each = 10000,
@@ -128,10 +128,10 @@ mop_time <- system.time({
 
 mop_time
 #>     user   system  elapsed 
-#>  420.586   15.776 2781.064 
+#>   99.932   9.929  1526.072  
 ```
 
-This process took about 46 minutes which seems to be a lot of time but note
+This process took about 25 minutes which seems to be a lot of time but note
 that this analysis was done for the whole world! Moreover, this kind of
 MOP analysis wont run on other packages. 
 
