@@ -12,7 +12,7 @@ NULL
 #' @name calcMOP
 #' @title Compute mop serial version
 #' @param x is the reference matrix.
-#' @param y is the trasfer matrix.
+#' @param y is the trasnfer matrix.
 #' @return Returns a vector of mop values
 #' @details The unique difference with the function parcalcMOP
 #' is that it prints the percentage of advance

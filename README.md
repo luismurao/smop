@@ -44,7 +44,7 @@ Calibration area
 ```R
 terra::plot(M_calibra)
 ```
-![Fig. 2. Calibration area in Centra America.](man/figures/03_calibration_area.png)
+![Fig. 2. Calibration area in Centro America.](man/figures/03_calibration_area.png)
 
 Model transfer area
 
@@ -74,7 +74,7 @@ mop_test <- smop::mop(M_calibra = M_calibra, G_transfer =  G_transfer,
                       normalized = TRUE, standardize_vars=TRUE)
 terra::plot(mop_test)
 ```
-![Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogus climates.](man/figures/06_mop_analysis.png)
+![Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogous climates.](man/figures/06_mop_analysis.png)
 
 ##### Parallel MOP
 

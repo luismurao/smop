@@ -6,7 +6,7 @@
 \arguments{
 \item{x}{is the reference matrix.}
 
-\item{y}{is the trasfer matrix.}
+\item{y}{is the trasnfer matrix.}
 }
 \value{
 Returns a vector of mop values
