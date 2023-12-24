@@ -1,4 +1,8 @@
-# smop
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/luismurao/smop/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/luismurao/smop/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+# smop <a href="https://luismurao.github.io/smop/"><img src="man/figures/logo.png" align="right" height="139" /></a>
  
  The `smop` package is a small R package (it has two main functions) designed 
  to perform the Mobility-Oriented Parity analysis (MOP) both in fast fashion 
