@@ -1,6 +1,6 @@
 Package: smop
 Title: Simple but Fast MOP Analysis
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
     person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", 
     role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0701-5398")),
