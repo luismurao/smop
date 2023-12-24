@@ -1,7 +1,11 @@
 pandoc: 3.1.8
-pkgdown: 2.0.7
-pkgdown_sha: ~
+pkgdown: 2.0.7.9000
+pkgdown_sha: 13d8d621105a3a527a05e46c6c805a6564c39791
 articles:
   smop: smop.html
-last_built: 2023-12-24T18:30Z
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
+last_built: 2023-12-24T20:35Z
 
