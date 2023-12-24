@@ -7,9 +7,9 @@ Authors@R: c(
     person("Rusby G.", "Contreras-Díaz", , "rusby.contreras.diaz@gmail.com", 
     role = "aut", comment = c(ORCID = "0000-0002-0569-8984"))
   )
-Description: Implements the Mobility-Oriented Parity (MOP) anlysis using
-    the Rcpp package. The MOP algorithm is detalied in the following paper
-    <doi:10.1016/j.ecolmodel.2013.04.011>.
+Description: Implements the Mobility-Oriented Parity (MOP) analysis using
+    the Rcpp package. The MOP algorithm is detailed in the following paper
+    \doi{10.1016/j.ecolmodel.2013.04.011}.
 License: GPL (>= 3) + file LICENSE
 Imports: 
     furrr,

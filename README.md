@@ -3,8 +3,8 @@
  The `smop` package is a small R package (it has two main functions) designed 
  to perform the Mobility-Oriented Parity analysis (MOP) both in fast fashion 
  and taking care of memory usage. To do this it uses optimized `C++` code via
- the [`Rcpp`](https://cran.r-project.org/web/packages/Rcpp/index.html) and 
- [`RccpArmadillo`](https://cran.r-project.org/web/packages/RcppArmadillo/index.html) 
+ the [`Rcpp`](https://cran.r-project.org/package=Rcpp) and 
+ [`RcppArmadillo`](https://cran.r-project.org/package=RcppArmadillo) 
  packages. 
 
  The MOP test was proposed in 

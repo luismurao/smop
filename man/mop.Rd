@@ -29,7 +29,8 @@ computations using the furrr package, see example 2.}
 
 \item{normalized}{(logical) if TRUE mop output will be normalized to 1.}
 
-\item{standardize_vars}{Logical. Standardize predictors see}
+\item{standardize_vars}{Logical. Standardize predictors see
+\code{\link[smop]{std_vars}}}
 }
 \value{
 A SpatRaster object of MOP distances.
@@ -39,7 +40,7 @@ mop calculates a Mobility-Oriented Parity
 }
 \details{
 The MOP is calculated following Owens et al.
-(2013; https://doi.org/10.1016/j.ecolmodel.2013.04.011).
+(2013; \url{https://doi.org/10.1016/j.ecolmodel.2013.04.011}).
 This function is a modification of the MOP function in ntbox R package.
 }
 \examples{
@@ -57,12 +58,12 @@ mop_test <- smop::mop(M_calibra = M_calibra, G_transfer =  G_transfer,
 terra::plot(mop_test)
 \donttest{
 # Example 2: Run the mop function in parallel
-future::plan("future::multisession",workers = 2)
-mop_test_parallel <- smop::mop(M_calibra = M_calibra,
-                               G_transfer =  G_transfer,
-                               percent = 20,comp_each = 500,
-                               normalized = TRUE, standardize_vars=TRUE)
-future::plan("future::sequential")
-terra::plot(mop_test_parallel)
+# future::plan("future::multisession",workers = 2)
+# mop_test_parallel <- smop::mop(M_calibra = M_calibra,
+#                                G_transfer =  G_transfer,
+#                                percent = 20,comp_each = 500,
+#                                normalized = TRUE, standardize_vars=TRUE)
+# future::plan("future::sequential")
+# terra::plot(mop_test_parallel)
 }
 }

@@ -9,13 +9,14 @@
 #' region to calculate the MOP.
 #' @param normalized (logical) if TRUE mop output will be normalized to 1.
 #' @param standardize_vars Logical. Standardize predictors see
+#' \code{\link[smop]{std_vars}}
 #' @param comp_each (numeric) compute distance matrix for a each fixed number
 #'  of rows (default = 100). This parameter is for paralleling the MOP
 #' computations using the furrr package, see example 2.
 #' @return A SpatRaster object of MOP distances.
 #' @details
 #' The MOP is calculated following Owens et al.
-#' (2013; https://doi.org/10.1016/j.ecolmodel.2013.04.011).
+#' (2013; \url{https://doi.org/10.1016/j.ecolmodel.2013.04.011}).
 #' This function is a modification of the MOP function in ntbox R package.
 #'
 #' @importFrom future plan
@@ -36,13 +37,13 @@
 #' terra::plot(mop_test)
 #' \donttest{
 #' # Example 2: Run the mop function in parallel
-#' future::plan("future::multisession",workers = 2)
-#' mop_test_parallel <- smop::mop(M_calibra = M_calibra,
-#'                                G_transfer =  G_transfer,
-#'                                percent = 20,comp_each = 500,
-#'                                normalized = TRUE, standardize_vars=TRUE)
-#' future::plan("future::sequential")
-#' terra::plot(mop_test_parallel)
+#' # future::plan("future::multisession",workers = 2)
+#' # mop_test_parallel <- smop::mop(M_calibra = M_calibra,
+#' #                                G_transfer =  G_transfer,
+#' #                                percent = 20,comp_each = 500,
+#' #                                normalized = TRUE, standardize_vars=TRUE)
+#' # future::plan("future::sequential")
+#' # terra::plot(mop_test_parallel)
 #' }
 
 
