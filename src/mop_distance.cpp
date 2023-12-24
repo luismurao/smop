@@ -25,6 +25,10 @@ double rcpp_mean(NumericVector x) {
 
  };
 
+double arma_mean(const arma::vec &A){
+  return arma::mean(A);
+}
+
 
 
 Rcpp::NumericVector lq(Rcpp::NumericVector x, double th) {
@@ -111,7 +115,8 @@ NumericVector Cquantile(NumericVector x, NumericVector q) {
      //Rcpp::NumericVector outq = Quantile(output1,prob);
      Rcpp::NumericVector outq = Cquantile(output1,prob);
      //output2[i] = Rcpp::mean(outq);
-     output2[i] = rcpp_mean(outq);
+     //output2[i] = rcpp_mean(outq);
+     output2[i] = arma_mean(outq);
      //if(i % porcentaje ==0)
       // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
 
