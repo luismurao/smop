@@ -102,7 +102,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">M_calibra</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="reference/figures/03_calibration_area.png" alt="Fig. 2. Calibration area in Centra America."><div class="figcaption">Fig. 2. Calibration area in Centra America.</div>
+<img src="reference/figures/03_calibration_area.png" alt="Fig. 2. Calibration area in Centro America."><div class="figcaption">Fig. 2. Calibration area in Centro America.</div>
 </div>
 <p>Model transfer area</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -130,7 +130,7 @@
 <span>                      normalized <span class="op">=</span> <span class="cn">TRUE</span>, standardize_vars<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mop_test</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
-<img src="reference/figures/06_mop_analysis.png" alt="Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogus climates."><div class="figcaption">Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogus climates.</div>
+<img src="reference/figures/06_mop_analysis.png" alt="Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogous climates."><div class="figcaption">Fig. 5. MOP analysis. In this map zero values (in gray) represent zones of strict extrapolation and values above it are zones with analogous climates.</div>
 </div>
 <div class="section level5">
 <h5 id="parallel-mop">Parallel MOP<a class="anchor" aria-label="anchor" href="#parallel-mop"></a>
@@ -146,14 +146,14 @@
 <span><span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"future::sequential"</span><span class="op">)</span></span>
 <span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mop_test_parallel</span><span class="op">)</span></span></code></pre></div>
 <p>In fact, the better management of memory and the optimization of the code allows users to run MOP analyses on huge extents such as the whole world. Here, we show how to run the MOP using the bioclimatic variables for the current time at 10 arc minutes and an climate change scenario.</p>
-<p>First, we downloaded the climatic layer for whole world for the current time at 10 arc minutes of resolution. Then, we downloaded the climate change layers at the same spatial resolution.Finally, we run the MOP analysis in a parallel fashion using 20 cores.</p>
+<p>First, we downloaded the climatic layer for whole world for the current time at 10 arc minutes of resolution. Then, we downloaded the climate change layers at the same spatial resolution. Finally, we run the MOP analysis in a parallel fashion using 10 cores (MACBOOK PRO Apple M1 Max).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bio10_pre</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geodata/man/worldclim.html" class="external-link">worldclim_global</a></span><span class="op">(</span><span class="st">"bioc"</span>,res<span class="op">=</span><span class="fl">10</span>,path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">bio10_fut</span> <span class="op">&lt;-</span> <span class="fu">geodata</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/geodata/man/cmip6.html" class="external-link">cmip6_world</a></span><span class="op">(</span><span class="st">"CNRM-CM6-1"</span>, <span class="st">"585"</span>, <span class="st">"2061-2080"</span>,</span>
 <span>                              var<span class="op">=</span><span class="st">"bioc"</span>, res<span class="op">=</span><span class="fl">10</span>, path<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">mop_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="op">{</span></span>
-<span>  <span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"future::multisession"</span>,workers <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span>  <span class="fu">future</span><span class="fu">::</span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html" class="external-link">plan</a></span><span class="op">(</span><span class="st">"future::multisession"</span>,workers <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span>  <span class="va">mop_basic_res1</span> <span class="op">&lt;-</span> <span class="fu">smop</span><span class="fu">::</span><span class="fu"><a href="reference/mop.html">mop</a></span><span class="op">(</span>M_calibra <span class="op">=</span> <span class="va">bio10_pre</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>                              G_transfer <span class="op">=</span> <span class="va">bio10_fut</span><span class="op">[[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">12</span>,<span class="fl">15</span><span class="op">)</span><span class="op">]</span><span class="op">]</span>,</span>
 <span>                              comp_each <span class="op">=</span> <span class="fl">10000</span>,</span>
@@ -164,8 +164,8 @@
 <span></span>
 <span><span class="va">mop_time</span></span>
 <span><span class="co">#&gt;     user   system  elapsed </span></span>
-<span><span class="co">#&gt;  420.586   15.776 2781.064 </span></span></code></pre></div>
-<p>This process took about 46 minutes which seems to be a lot of time but note that this analysis was done for the whole world! Moreover, this kind of MOP analysis wont run on other packages.</p>
+<span><span class="co">#&gt;   99.932   9.929  1526.072  </span></span></code></pre></div>
+<p>This process took about 25 minutes which seems to be a lot of time but note that this analysis was done for the whole world! Moreover, this kind of MOP analysis wont run on other packages.</p>
 </div>
 </div>
 </div>
