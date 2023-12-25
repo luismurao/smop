@@ -128,10 +128,10 @@ mop_time <- system.time({
 
 mop_time
 #>     user   system  elapsed 
-#>   99.932   9.929  1526.072  
+#>    47.362   5.575  748.391  
 ```
 
-This process took about 25 minutes which seems to be a lot of time but note
+This process took about 12 minutes which seems to be a lot of time but note
 that this analysis was done for the whole world! Moreover, this kind of
 MOP analysis wont run on other packages. 
 
