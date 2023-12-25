@@ -44,7 +44,7 @@ Calibration area
 ```R
 terra::plot(M_calibra)
 ```
-![Fig. 2. Calibration area in Centro America.](man/figures/03_calibration_area.png)
+![Fig. 2. Calibration area in Central America.](man/figures/03_calibration_area.png)
 
 Model transfer area
 

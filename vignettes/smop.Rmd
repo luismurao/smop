@@ -48,7 +48,7 @@ G_transfer <- terra::rast(g_path)
 
 Calibration area
 
-```{r, eval=TRUE,fig.cap="Fig. 2. Calibration area in Centra America."}
+```{r, eval=TRUE,fig.cap="Fig. 2. Calibration area in Central America."}
 terra::plot(M_calibra)
 ```
 
@@ -111,9 +111,9 @@ allows users to run MOP analyses on huge extents such as the whole world. Here,
 we show how to run the MOP using the bioclimatic variables for the current time 
 at 10 arc minutes and an climate change scenario.
 
-First, we downloaded the climatic layer for whole world and the current time at
-10 arc minutes. Then, we downloaded the climate change layers. Finally, we run
-the MOP analysis in a parallel fashion using 20 cores.
+First, we downloaded the climatic layer for whole world for the current time at
+10 arc minutes of spatial resolution. Then, we downloaded the climate change 
+layers. Finally, we run the MOP analysis in a parallel fashion using 10 cores.
 
 ```R
 bio10_pre <- geodata::worldclim_global("bioc",res=10,path = tempdir())
@@ -121,7 +121,7 @@ bio10_fut <- geodata::cmip6_world("CNRM-CM6-1", "585", "2061-2080",
                               var="bioc", res=10, path=tempdir())
 
 mop_time <- system.time({
-  future::plan("future::multisession",workers = 20)
+  future::plan("future::multisession",workers = 10)
   mop_basic_res1 <- smop::mop(M_calibra = bio10_pre[[c(1,5,6,12,15)]],
                               G_transfer = bio10_fut[[c(1,5,6,12,15)]],
                               comp_each = 10000,
@@ -132,10 +132,10 @@ mop_time <- system.time({
 
 mop_time
 #>     user   system  elapsed 
-#>  420.586   15.776 2781.064 
+#>    47.362   5.575  748.391 
 ```
 
-This process took about 46 minutes which seems to be a lot of time but note
+This process took about 12 minutes which seems to be a lot of time but note
 that this analysis was done for the whole world! Moreover, this kind of
 MOP analysis wont run on other packages. 
 
