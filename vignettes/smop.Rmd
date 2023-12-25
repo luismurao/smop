@@ -61,7 +61,7 @@ terra::plot(G_transfer)
 
 Zones where strict extrapolation occurs.
 
-```{r, fig.cap="Zones of strict extrapolation. The green zones represent areas where strcit extrapolation occurs"}
+```{r, fig.cap="Zones of strict extrapolation. The green zones represent areas where strict extrapolation occurs"}
 extr_zones <- smop::extrapolation_zones(M_calibra = M_calibra,
                                         G_transfer = G_transfer,
                                         as_vec =FALSE)

@@ -61,7 +61,7 @@ extr_zones <- smop::extrapolation_zones(M_calibra = M_calibra,
                                         as_vec =FALSE)
 terra::plot(extr_zones)
 ```
-![Fig. 4. Zones of strict extrapolation. The green zones represent areas where strcit extrapolation occurs.](man/figures/05_strict_extrapol.png)
+![Fig. 4. Zones of strict extrapolation. The green zones represent areas where strict extrapolation occurs.](man/figures/05_strict_extrapol.png)
 
 #### The MOP analysis
 
