@@ -24,14 +24,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // calcMOP
-Rcpp::NumericVector calcMOP(arma::mat& x, arma::mat& y, Rcpp::NumericVector prob);
+arma::vec calcMOP(arma::mat& x, arma::mat& y, arma::vec& prob);
 RcppExport SEXP _smop_calcMOP(SEXP xSEXP, SEXP ySEXP, SEXP probSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
     Rcpp::traits::input_parameter< arma::mat& >::type y(ySEXP);
-    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type prob(probSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type prob(probSEXP);
     rcpp_result_gen = Rcpp::wrap(calcMOP(x, y, prob));
     return rcpp_result_gen;
 END_RCPP

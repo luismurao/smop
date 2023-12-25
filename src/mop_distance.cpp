@@ -91,41 +91,71 @@ NumericVector Cquantile(NumericVector x, NumericVector q) {
 
 // [[Rcpp::plugins(unwindProtect)]]
 // [[Rcpp::export]]
+arma::vec calcMOP (arma::mat &x, arma::mat &y, arma::vec &prob){
 
- Rcpp::NumericVector calcMOP (arma::mat &x, arma::mat &y, Rcpp::NumericVector prob){
+  int n_rowx = x.n_rows;
+  int n_rowy = y.n_rows;
+  //double n_rowyb = n_rowy;
+  //unsigned total = n_rowx*n_rowy;
+  //Rcpp::Rcout << "The total number of cells to compare is " <<  total << std::endl;
+  //double porcentaje = ceil(n_rowyb / 100.0) ;
+  arma::vec output1(n_rowx);
+  arma::vec output2(n_rowy);
 
-   int n_rowx = x.n_rows;
-   int n_rowy = y.n_rows;
-   //double n_rowyb = n_rowy;
-   //unsigned total = n_rowx*n_rowy;
-   //Rcpp::Rcout << "The total number of cells to compare is " <<  total << std::endl;
-   //double porcentaje = ceil(n_rowyb / 100.0) ;
-   Rcpp::NumericVector output1(n_rowx);
-   Rcpp::NumericVector output2(n_rowy);
+  for(int i=0; i< n_rowy; ++i){
+    arma::mat A = y.row(i);
+    for(int j=0; j< n_rowx; ++j){
+      arma::mat B = x.row(j);
+      double a = calcDistance(A,B);
+      output1[j] = a;
+    }
+    arma::vec outq = arma::quantile(output1,prob);
 
-   for(int i=0; i< n_rowy; ++i){
-     arma::mat A = y.row(i);
-     for(int j=0; j< n_rowx; ++j){
-       arma::mat B = x.row(j);
-       double a = calcDistance(A,B);
-       output1[j] = a;
-     }
-     //double q = quantile(output1,prob);
-     //Rcpp::NumericVector outq = Quantile(output1,prob);
-     //Rcpp::NumericVector outq = Cquantile(output1,prob);
-     arma::vec o1 = output1;
-     arma::vec p1 = prob;
-     Rcpp::NumericVector outq = as<NumericVector>(wrap(arma::quantile(o1,p1)));
+    //output2[i] = Rcpp::mean(outq);
+    //output2[i] = rcpp_mean(outq);
+    output2[i] = arma_mean(outq);
+    //if(i % porcentaje ==0)
+    // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
 
-     //output2[i] = Rcpp::mean(outq);
-     //output2[i] = rcpp_mean(outq);
-     output2[i] = arma_mean(outq);
-     //if(i % porcentaje ==0)
-      // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
+  };
+  //Rcpp::NumericVector vec_Rcpp   = as<NumericVector>(wrap(output2));
+  return output2;
 
-   };
-   return output2;
+};
 
- };
+Rcpp::NumericVector calcMOPc (arma::mat &x, arma::mat &y, Rcpp::NumericVector prob){
 
+  int n_rowx = x.n_rows;
+  int n_rowy = y.n_rows;
+  //double n_rowyb = n_rowy;
+  //unsigned total = n_rowx*n_rowy;
+  //Rcpp::Rcout << "The total number of cells to compare is " <<  total << std::endl;
+  //double porcentaje = ceil(n_rowyb / 100.0) ;
+  Rcpp::NumericVector output1(n_rowx);
+  Rcpp::NumericVector output2(n_rowy);
+
+  for(int i=0; i< n_rowy; ++i){
+    arma::mat A = y.row(i);
+    for(int j=0; j< n_rowx; ++j){
+      arma::mat B = x.row(j);
+      double a = calcDistance(A,B);
+      output1[j] = a;
+    }
+    //double q = quantile(output1,prob);
+    //Rcpp::NumericVector outq = Quantile(output1,prob);
+    //Rcpp::NumericVector outq = Cquantile(output1,prob);
+    arma::vec o1 = output1;
+    arma::vec p1 = prob;
+    Rcpp::NumericVector outq = as<NumericVector>(wrap(arma::quantile(o1,p1)));
+
+    //output2[i] = Rcpp::mean(outq);
+    //output2[i] = rcpp_mean(outq);
+    output2[i] = arma_mean(outq);
+    //if(i % porcentaje ==0)
+    // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
+
+  };
+  return output2;
+
+};
 
