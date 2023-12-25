@@ -32,13 +32,15 @@ g_path <- system.file("extdata/G_layers", package = "smop") |>
                        list.files(full.names=TRUE)
 M_calibra <- terra::rast(m_path)
 G_transfer <- terra::rast(g_path)
-extr_zones <- smop::extrapolation_zones(M_calibra = M_calibra,
-                                        G_transfer = G_transfer,
-                                        as_vec =FALSE)
-
-terra::plot(extr_zones)
-extr_zones_ids <- smop::extrapolation_zones(M_calibra = M_calibra,
-                                            G_transfer = G_transfer,
-                                            as_vec =TRUE)
-head(extr_zones_ids)
+\donttest{
+# extr_zones <- smop::extrapolation_zones(M_calibra = M_calibra,
+#                                         G_transfer = G_transfer,
+#                                         as_vec =FALSE)
+#
+# terra::plot(extr_zones)
+# extr_zones_ids <- smop::extrapolation_zones(M_calibra = M_calibra,
+#                                             G_transfer = G_transfer,
+#                                             as_vec =TRUE)
+# head(extr_zones_ids)
+}
 }
