@@ -16,7 +16,7 @@
 #' @return A SpatRaster object of MOP distances.
 #' @details
 #' The MOP is calculated following Owens et al.
-#' (2013; \url{https://doi.org/10.1016/j.ecolmodel.2013.04.011}).
+#' (2013;  \doi{10.1016/j.ecolmodel.2013.04.011}).
 #' This function is a modification of the MOP function in ntbox R package.
 #'
 #' @importFrom future plan
