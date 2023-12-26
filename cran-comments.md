@@ -1,16 +1,17 @@
 ## Test environments
 
-* local OS X install, R 4.1.1
-* Ubuntu Linux 20.04.1 LTS (on R-hub), R 4.1.2
+* Local OS X (14.2,Apple M1 Max) install, R 4.1.1
+* Ubuntu Linux 20.04.1 LTS (on R-hub and local), R 4.1.2
 * Fedora Linux (on R-hub) R-devel
 * Debian Linux (on R-hub) R-devel
+* Local Windows (10 pro)
 * Windows Server 2022, R-devel
 
 ## R CMD check results
 
 No ERRORs or WARNINGs. 
 
-There are 4 NOTEs.
+There are 5 NOTEs.
 
 1. This is a new submission
 
@@ -39,6 +40,9 @@ Found the following files/directories:
 * checking HTML version of manual ... NOTE
 Skipping checking HTML validation: no command 'tidy' found
 ```
+
+5. Ubuntu and Fedora, examples with CPU (user + system) or elapsed time > 5s.
+
 
 Best regards,
 
