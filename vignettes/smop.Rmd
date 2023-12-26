@@ -109,7 +109,7 @@ terra::plot(mop_test_parallel)
 In fact, the better management of memory and the optimization of the code 
 allows users to run MOP analyses on huge extents such as the whole world. Here,
 we show how to run the MOP using the bioclimatic variables for the current time 
-at 10 arc minutes and an climate change scenario.
+at 10 arc minutes and a climate change scenario.
 
 First, we downloaded the climatic layer for whole world for the current time at
 10 arc minutes of spatial resolution. Then, we downloaded the climate change 
