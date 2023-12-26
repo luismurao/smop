@@ -23,7 +23,7 @@ double rcpp_mean(NumericVector x) {
    //return std::sqrt(arma::accu(arma::square(A - B)));
    return arma::accu(arma::square(A - B));
 
- };
+ }
 
 double arma_mean(const arma::vec &A){
   return arma::mean(A);
@@ -32,7 +32,7 @@ double arma_mean(const arma::vec &A){
 
 Rcpp::NumericVector lq(Rcpp::NumericVector x, double th) {
   return x[x <= th];
-};
+}
 
 
 double quantile(Rcpp::NumericVector &x,double prob){
@@ -42,7 +42,7 @@ double quantile(Rcpp::NumericVector &x,double prob){
   x = x.sort();
   double qs = x.at(lo);
   return qs;
-};
+}
 
 
 
@@ -71,13 +71,13 @@ double quantile(Rcpp::NumericVector &x,double prob){
      }
    }
    return x[x<=qs[0]];
- };
+ }
 
 NumericVector Cquantile(NumericVector x, NumericVector q) {
   NumericVector y = clone(x);
   std::sort(y.begin(), y.end());
   return y[x.size()*(q - 0.000000001)];
-};
+}
 
 
 
@@ -117,11 +117,12 @@ arma::vec calcMOP (arma::mat &x, arma::mat &y, arma::vec &prob){
     //if(i % porcentaje ==0)
     // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
 
-  };
+  }
   //Rcpp::NumericVector vec_Rcpp   = as<NumericVector>(wrap(output2));
+  //return vec_Rcpp;
   return output2;
 
-};
+}
 
 Rcpp::NumericVector calcMOPc (arma::mat &x, arma::mat &y, Rcpp::NumericVector prob){
 
@@ -154,8 +155,8 @@ Rcpp::NumericVector calcMOPc (arma::mat &x, arma::mat &y, Rcpp::NumericVector pr
     //if(i % porcentaje ==0)
     // Rcpp::Rcout << "Percentage: " << (i/n_rowyb)*100 << "%" << std::endl;
 
-  };
+  }
   return output2;
 
-};
+}
 
