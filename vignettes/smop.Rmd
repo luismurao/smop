@@ -139,4 +139,8 @@ This process took about 12 minutes which seems to be a lot of time but note
 that this analysis was done for the whole world! Moreover, this kind of
 MOP analysis wont run on other packages. 
 
-
+Lets plot the result
+```R
+terra::plot(mop_basic_res1)
+```
+![Fig. 6. MOP analysis for the whole world.](../man/figures/07_mop_world.png)
