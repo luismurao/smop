@@ -11,6 +11,8 @@ Description: Implements the Mobility-Oriented Parity (MOP) analysis using
     the Rcpp package. The MOP algorithm is detailed in the following paper
     \doi{10.1016/j.ecolmodel.2013.04.011}.
 License: GPL (>= 3) + file LICENSE
+URL: https://luismurao.github.io/smop/
+BugReports: https://github.com/luismurao/smop/issues
 Imports: 
     furrr,
     future,
