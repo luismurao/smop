@@ -3,6 +3,7 @@
 export(exdet_multvar)
 export(exdet_univar)
 export(extrapolation_zones)
+export(mess)
 export(mop)
 export(mop_distance)
 export(std_vars)
