@@ -5,7 +5,7 @@
 
 # smop <a href="https://luismurao.github.io/smop/"><img src="man/figures/logo.png" align="right" height="139" /></a>
  
- The `smop` package is a small R package (it has two main functions) designed 
+ The `smop` package is a small R package (it has four main functions) designed 
  to perform the Mobility-Oriented Parity analysis (MOP) both in fast fashion 
  and taking care of memory usage. To do this it uses optimized `C++` code via
  the [`Rcpp`](https://cran.r-project.org/package=Rcpp) and 

@@ -1,4 +1,5 @@
-#' Exdet univariate: NT1 metric, univariate extrapolation risk analysis for model transfer
+#' Exdet univariate: NT1 metric, univariate extrapolation risk analysis for
+#' model transfer
 #'
 #' @description exdet_univa calculates NT1 metric.
 #' @param M_calibra A SpatRaster or a Matrix of variables representing the

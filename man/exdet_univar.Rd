@@ -2,7 +2,8 @@
 % Please edit documentation in R/exdet_univar.R
 \name{exdet_univar}
 \alias{exdet_univar}
-\title{Exdet univariate: NT1 metric, univariate extrapolation risk analysis for model transfer}
+\title{Exdet univariate: NT1 metric, univariate extrapolation risk analysis for
+model transfer}
 \usage{
 exdet_univar(M_calibra, G_transfer, G_mold = NULL)
 }
