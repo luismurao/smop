@@ -25,8 +25,6 @@ double arma_mean(const arma::vec &A){
 //' @param x is the reference matrix.
 //' @param y is the transfer matrix.
 //' @return Returns a vector of mop values
-//' @details The unique difference with the function parcalcMOP
-//' is that it prints the percentage of advance
 
 // [[Rcpp::plugins(unwindProtect)]]
 // [[Rcpp::export]]

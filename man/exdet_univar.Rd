@@ -22,6 +22,9 @@ from \code{\link[terra]{values}} function.}
 This is only necessary when G_stack is of class matrix; G_mold will we
 use as a mold to save the NT1 values computed by exdet_univa function.}
 }
+\value{
+NT1 metric (univariate extrapolation) as a SpatRaster object.
+}
 \description{
 exdet_univa calculates NT1 metric.
 }

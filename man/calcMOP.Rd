@@ -14,7 +14,3 @@ Returns a vector of mop values
 \description{
 Compute mop serial version
 }
-\details{
-The unique difference with the function parcalcMOP
-is that it prints the percentage of advance
-}

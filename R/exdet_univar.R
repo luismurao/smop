@@ -19,6 +19,7 @@
 #' Here be dragons: a tool for quantifying novelty due to covariate
 #' range and correlation change when projecting species distribution models.
 #' Diversity & Distributions, 20: 1147–1159, DOI: 10.1111/ddi.12209.
+#' @return NT1 metric (univariate extrapolation) as a SpatRaster object.
 #' @export
 #'
 #' @examples
