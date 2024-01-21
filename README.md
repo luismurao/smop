@@ -140,3 +140,9 @@ Lets plot the result
 terra::plot(mop_basic_res1)
 ```
 ![Fig. 6. MOP analysis for the whole world.](man/figures/07_mop_world.png)
+
+## Acknowledgments
+
+PAPIIT IA202824 and CONACYT Ciencia de Frontera CF-2023-I-1156.
+Laboratorio Nacional Conahcyt de Biología del Cambio Climático, México. 
+
