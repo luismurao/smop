@@ -5,7 +5,9 @@ Authors@R: c(
     person("Luis", "Osorio-Olvera", , "luismurao@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0701-5398")),
     person("Rusby G.", "Contreras-Díaz", , "rusby.contreras.diaz@gmail.com", role = "aut",
-           comment = c(ORCID = "0000-0002-0569-8984"))
+           comment = c(ORCID = "0000-0002-0569-8984")),
+    person(given = "Xavier", family = "Chiappa-Carrara", email = "xcc@ciencias.unam.mx", 
+           role = c("aut"), comment = c(ORCID = "0000-0002-1708-2095"))
   )
 Description: Implements the Mobility-Oriented Parity (MOP) analysis using
     the Rcpp package. The MOP algorithm is detailed in the following paper
