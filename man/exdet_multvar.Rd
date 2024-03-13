@@ -45,8 +45,9 @@ g_transfer <- terra::rast(list.files(system.file("extdata/G_layers",
                                     pattern = ".tif$",
                                     full.names = TRUE))
 
-
+\dontrun{
 NT2 <- smop::exdet_multvar(M_calibra = m_calibra,
                            G_transfer = g_transfer)
 terra::plot(NT2)
+}
 }

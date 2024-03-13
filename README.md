@@ -143,6 +143,9 @@ terra::plot(mop_basic_res1)
 
 ## Acknowledgments
 
-PAPIIT IA202824 and CONACYT Ciencia de Frontera CF-2023-I-1156.
-Laboratorio Nacional Conahcyt de Biología del Cambio Climático, México. 
+CONACYT Ciencia de Frontera CF-2023-I-1156. Laboratorio Nacional Conahcyt de 
+Biología del Cambio Climático, México. To PAPIIT-UNAM IA202824 and 
+PAPIIT-UNAM IA203922. RGCD thanks the Universidad Nacional Autónoma de México 
+(Dirección General de Asuntos del Personal Académico, DGAPA-UNAM, México) for 
+her postdoctoral scholarship. 
 

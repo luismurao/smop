@@ -30,10 +30,11 @@
 #'                                     pattern = ".tif$",
 #'                                     full.names = TRUE))
 #'
-#'
+#' \dontrun{
 #' NT2 <- smop::exdet_multvar(M_calibra = m_calibra,
 #'                            G_transfer = g_transfer)
 #' terra::plot(NT2)
+#' }
 
 exdet_multvar <- function(M_calibra, G_transfer,G_mold=NULL) {
 
